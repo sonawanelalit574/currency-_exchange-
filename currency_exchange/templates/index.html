@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Exchange Rates</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+</head>
+<body>
+  <div class="shell">
+    <header class="top">
+      <div>
+        <p class="eyebrow">Live FX</p>
+        <h1>Currency Exchange</h1>
+      </div>
+      <p class="as-of" id="asOf">Rates via Frankfurter (ECB)</p>
+    </header>
+
+    <section class="converter card">
+      <div class="amount-block">
+        <label for="amount">Amount</label>
+        <input id="amount" type="number" min="0" step="any" value="100">
+      </div>
+      <div class="pair">
+        <div class="ccy">
+          <label for="fromCcy">From</label>
+          <select id="fromCcy"></select>
+        </div>
+        <button type="button" id="swapBtn" class="swap" title="Swap currencies">⇄</button>
+        <div class="ccy">
+          <label for="toCcy">To</label>
+          <select id="toCcy"></select>
+        </div>
+      </div>
+      <div class="result" id="resultPanel">
+        <p class="result-main" id="resultMain">—</p>
+        <p class="result-meta" id="resultMeta">Enter an amount to convert</p>
+      </div>
+    </section>
+
+    <section class="split">
+      <div class="card">
+        <div class="card-head">
+          <h2>Popular rates</h2>
+          <span id="tableBase">Base USD</span>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Currency</th>
+              <th>Name</th>
+              <th class="num">Rate</th>
+            </tr>
+          </thead>
+          <tbody id="rateBody"></tbody>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <h2>30-day trend</h2>
+          <span id="trendLabel">USD / INR</span>
+        </div>
+        <svg id="trendChart" viewBox="0 0 360 160" preserveAspectRatio="none" aria-label="Rate history chart"></svg>
+        <p class="caption" id="trendCaption">Daily mid rates</p>
+      </div>
+    </section>
+  </div>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
